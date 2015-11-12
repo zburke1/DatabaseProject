@@ -1,7 +1,7 @@
-create table product(ID char(6),name char(30), active bool, description char(50), stockQuantity integer, price real, PRIMARY KEY(ID)); 
-create table supplier(); 
-create table order(); 
-create table user();
+create table product(productId char(6), supplierID char(6),name char(30), active BIT, description char(50), stockQuantity integer, price real, PRIMARY KEY(productID)); 
+create table supplier(supplierId char(6),productId char(6),name char(30), PRIMARY KEY(ID)); 
+create table order(orderId char(6),dateOrder date, paid BIT, PRIMARY KEY(orderId)); 
+create table user(userId char(6),name char(25),address char(40),orderId char(6),is_staff BIT,email char(25),password char(25),PRIMARY KEY(userId));
 
 delete from product; 
 delete from supplier; 
