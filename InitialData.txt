@@ -1,6 +1,6 @@
-create table user(userId char(6),name char(25),address char(40),orderId char(6),is_staff BIT,email char(25),password char(25),PRIMARY KEY(userId));
-create table order(OrderId char(6),dateOrder date,productId char(6), paid BIT, PRIMARY KEY(OrderId)); 
-create table product(prodId char(6), supplyID char(6),name char(30), active BIT, description char(50), stockQuantity integer, price real, PRIMARY KEY(prodId)); 
+create table user(userId char(6),name char(25),address char(40),orderId char(6),is_staff BIT,email char(25),password char(25),PRIMARY KEY(userId),FOREIGN KEY(orderId) references order(OrderId));
+create table order(OrderId char(6),dateOrder date,productId char(6), paid BIT, PRIMARY KEY(OrderId),FOREIGN KEY(productId) references product(prodId)); 
+create table product(prodId char(6), supplyID char(6),name char(30), active BIT, description char(50), stockQuantity integer, price real, PRIMARY KEY(prodId),FOREIGN KEY(supplyID) references supplier(supplierId)); 
 create table supplier(supplierId char(6),productId char(6),name char(30), PRIMARY KEY(supplierId)); 
 --Weak Entity Set Tables
 create table orders(userId char(6), orderId char(6),OrderId char(6), PRIMARY KEY(userId,orderId,OrId));
