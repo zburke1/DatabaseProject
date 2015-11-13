@@ -41,6 +41,22 @@ INSERT into order values('555555','2015-11-02','000001','1');
 INSERT into order values('555555','2015-11-02','000002','1');
 
 --(prodId,supplyId,name,active,description,stockQuantity,price)
+INSERT into product('000001','00000a','HDMI 25 ft','HDMI Cable - 25 feet','1','10','30.00');
+INSERT into product('000002','00000a','VGA 15 ft','VGA Cable - 15 feet','1','50','19.99');
+INSERT into product('000003','00000b','Wireless Router','Wireless router that guarantees GB/s speeds','1','25','99.99');
+INSERT into product('000004','00000b','25ft Ethernet Cable','25 foot cat5 ethernet cable','1','100');
+INSERT into product('000005','00000c','22 inch LED monitor','22inch monitor with vibrant 1080 resolution','1','8','179.99');
+INSERT into product('000006','00000c','20 inch LED Monitor','Our best priced LED monitor. 20inch screen size','0','0','99.99');
+ 
+--(supplierId,productId,name)
+INSERT into supplier('00000a','000001','Cheap Cables R Us');
+INSERT into supplier('00000a','000002','Cheap Cables R Us');
+INSERT into supplier('00000b','000003','Net-Works');
+INSERT into supplier('00000b','000004','Net-Works');
+INSERT into supplier('00000c','000005','Screen Shop');
+INSERT into supplier('00000c','000006','Screen Shop');
+
+--(orderID,productId,prodId,quantity)
 
 
 
