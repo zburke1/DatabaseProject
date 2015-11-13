@@ -1,9 +1,15 @@
-create table product(productId char(6), supplierID char(6),name char(30), active BIT, description char(50), stockQuantity integer, price real, PRIMARY KEY(productID)); 
-create table supplier(supplierId char(6),productId char(6),name char(30), PRIMARY KEY(ID)); 
-create table order(orderId char(6),dateOrder date, paid BIT, PRIMARY KEY(orderId)); 
 create table user(userId char(6),name char(25),address char(40),orderId char(6),is_staff BIT,email char(25),password char(25),PRIMARY KEY(userId));
+create table order(OrId char(6),dateOrder date,productId char(6), paid BIT, PRIMARY KEY(OrId)); 
+create table product(prodId char(6), supplyID char(6),name char(30), active BIT, description char(50), stockQuantity integer, price real, PRIMARY KEY(prodId)); 
+create table supplier(supplierId char(6),productId char(6),name char(30), PRIMARY KEY(supplierId)); 
+--Weak Entity Set Tables
+create table orders(userId char(6), orderId char(6),OrId char(6), PRIMARY KEY(userId,orderId,OrId));
+create table contains(OrId char(6),productId char(6),prodId char(6),quantity integer, PRIMARY KEY(OrId,prodId,productId));
+create table supplys(productId char(6),supplierId char(6),supplyId char(6), PRIMARY KEY(productId,supplierId,supplyId))
+
 
 delete from product; 
 delete from supplier; 
 delete from order; 
 delete from user;
+
