@@ -13,3 +13,9 @@ delete from supplier;
 delete from order; 
 delete from user;
 
+INSERT into user values('123456','Zachary','123456 Boogaloo Street','111111',0,'zactestemail@gmail.com','1234');
+INSERT into user values('223456','Will','1122 Electric Ave','222222',0,'will@email.com','password');
+INSERT into user values('323456','Nick','Address Madeup','333333',1,'nick@email.com','12345');
+
+	
+
