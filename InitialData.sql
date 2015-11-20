@@ -63,4 +63,21 @@ INSERT into contains values('555555','000004','10');
 INSERT into contains values('555555','000001','3');
 INSERT into contains values('555555','000002','10');
 
+--(this check constraint asserts that you cant take an action that would reduce the supply below zero)
+ALTER TABLE product
+ADD CONSTRAINT NoOverselling
+CHECK (stockQuantity > -1);
 
+--This trigger will only allow the staff to delete a product if no one is interested in buying it in the past month.
+--Unsure if we need to check if the user attempting the delete is staff?
+CREATE TRIGGER DeleteProductTrigger
+BEFORE DELETE ON Product
+FOR EACH ROW
+BEGIN
+  IF OLD.prodId = contains.productId AND orders.Orderid = contains.OrId
+  AND DATEDIFF (CURDATE(), orders.dateOrder) < 31 THEN
+    SIGNAL SQLSTATE '45000' --This is an unhandled user defined exception
+    --The custom text that mysql will return if a delete on a product with orders less than a month old is attempted
+    SET MESSAGE_TEXT = "Preventing Delete: People are still ordering this product!" 
+  END IF;
+END
