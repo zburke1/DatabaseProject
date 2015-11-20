@@ -1,3 +1,9 @@
+--OLD CODE!!!! SEE InitialData.sql for proper data entry
+--OLD CODE!!!! SEE InitialData.sql for proper data entry
+--OLD CODE!!!! SEE InitialData.sql for proper data entry
+--OLD CODE!!!! SEE InitialData.sql for proper data entry
+--OLD CODE!!!! SEE InitialData.sql for proper data entry
+--OLD CODE!!!! SEE InitialData.sql for proper data entry
 create table user(userId char(6),name char(25) NOT NULL,address char(40),orderId char(6),is_staff BIT,email char(25),password char(25) NOT NULL,PRIMARY KEY(userId),FOREIGN KEY(orderId) references order(OrderId));
 create table order(OrderId char(6),dateOrder date,productId char(6), paid BIT, PRIMARY KEY(OrderId),FOREIGN KEY(productId) references product(prodId)); 
 create table product(prodId char(6), supplyID char(6),name char(30) NOT NULL, active BIT, description char(50), stockQuantity integer, price real, PRIMARY KEY(prodId),FOREIGN KEY(supplyID) references supplier(supplierId)); 
