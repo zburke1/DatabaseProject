@@ -1,4 +1,4 @@
-USE dbFinal;
+use dbFinal;
 
 CREATE TABLE supplier(supplierId char(6), name char(30) NOT NULL, PRIMARY KEY(supplierId)); 
 CREATE TABLE product(prodId char(6), supplyID char(6),name char(30) NOT NULL, description char(50), active BIT, stockQuantity integer, price real, PRIMARY KEY(prodId),FOREIGN KEY(supplyID) references supplier(supplierId));
