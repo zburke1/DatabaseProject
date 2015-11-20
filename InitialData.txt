@@ -4,10 +4,8 @@ create table product(prodId char(6), supplyID char(6),name char(30) NOT NULL, ac
 create table supplier(supplierId char(6),productId char(6),name char(30) NOT NULL, PRIMARY KEY(supplierId)); 
 --Weak Entity Set Tables
 create table contains(OrId char(6),productId char(6),prodId char(6),quantity integer NOT NULL, PRIMARY KEY(OrId,prodId,productId));
-
---Below tables unneeded because relationship built by foreign keys
---create table orders(userId char(6), orderId char(6),OrderId char(6), PRIMARY KEY(userId,orderId,OrId));
---create table supplys(productId char(6),supplierId char(6),supplyId char(6), PRIMARY KEY(productId,supplierId,supplyId))
+create table orders(userId char(6), orderId char(6),OrderId char(6), PRIMARY KEY(userId,orderId,OrId));
+create table supplys(productId char(6),supplierId char(6),supplyId char(6), PRIMARY KEY(productId,supplierId,supplyId))
 
 
 delete from product; 
