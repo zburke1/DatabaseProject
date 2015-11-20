@@ -8,8 +8,8 @@ CREATE TABLE usr(userId char(6),name char(25) NOT NULL,address char(40),orderId 
 
 --Weak Entity Set Tables
 CREATE TABLE contains(OrId char(6),productId char(6),quantity integer NOT NULL, PRIMARY KEY(OrId,productId));
-CREATE TABLE orders(userId char(6), orderId char(6),OrderId char(6), PRIMARY KEY(userId,orderId,OrId));
-CREATE TABLE supplys(productId char(6),supplierId char(6),supplyId char(6), PRIMARY KEY(productId,supplierId,supplyId));
+--CREATE TABLE orders(userId char(6), orderId char(6),OrderId char(6), PRIMARY KEY(userId,orderId,OrId));
+--CREATE TABLE supplys(productId char(6),supplierId char(6),supplyId char(6), PRIMARY KEY(productId,supplierId,supplyId));
 
 
 DELETE FROM product; 
