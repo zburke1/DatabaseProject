@@ -4,3 +4,4 @@ dist
 .sass-cache
 bower_components
 /configUsr.php
+configUsr.php
