@@ -1,0 +1,21 @@
+
+<div ng-controller="SignInControl">
+
+ <center><h2>Sign-In</h2></center>
+<div flex layout="row" layout-align="center" class="mainContent">
+ <div class="signinBox" style="width:40%;">
+ <md-input-container>
+       <label>User Name</label>
+       <input ng-model="user.name" class="userID">
+     </md-input-container>
+	 <md-input-container>
+	       <label>Password</label>
+	       <input type="password" ng-model="user.password" class="userPassword">
+	     </md-input-container>
+	 <center><md-button class="md-raised md-primary" ng-click="signInPost()">Sign In</md-button></center>
+	 <center><h5>(or)</h5></center>
+	 <center><md-button class="md-raised md-primary" ng-click="SignUpRedirect()">Sign Up</md-button></center>
+ </div>
+ 
+</div>
+</div>

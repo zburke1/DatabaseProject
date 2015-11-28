@@ -14,43 +14,6 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- endbuild -->
-  </head>
-  <body ng-app="frontEndApp">
-	  <div ng-controller="MainCtrl">
-   <div class="header">
-   <md-content>
-       <md-toolbar>
-         <div class="md-toolbar-tools">
-           <md-button class="md-icon-button" aria-label="Settings">
-		   <div layout>
-			 <i class="material-icons">menu</i>
-		 </div>
-           </md-button>
-           <h2>
-             <span>Database Final Project</span>
-           </h2>
-           <span flex></span>
-           <md-button aria-label="Favorite">  
-				 <span>Button1</span>		 
-           </md-button>
-           <md-button class="md-icon-button" aria-label="More">
-            <!-- Put other button here -->
-           </md-button>
-         </div>
-       </md-toolbar>
-   </md-content>
-</div>
-<div class="mainContent">
-  <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-        <md-button class="md-raised md-primary" ng-click="primary1Clicked()">Primary1</md-button>
-        <md-button class="md-raised md-primary" ng-click="primary2Clicked()">Primary2</md-button>
-        <md-button class="md-raised md-primary">Primary3</md-button>
-        
-      </section>
-</div>
-
-
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
@@ -67,6 +30,37 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+		 <script src="scripts/controllers/SignInControl.js"></script>
+		<script src="scripts/controllers/HeaderCtrl.js"></script>
         <!-- endbuild -->
+    <!-- endbuild -->
+  </head>
+  <body ng-app="frontEndApp">
+	  <div ng-controller="HeaderCtrl">
+	     <div class="header">
+	     <md-content>
+	         <md-toolbar>
+	           <div class="md-toolbar-tools">
+	             <md-button class="md-icon-button" aria-label="Settings">
+	  		   <div layout>
+	  			 <a href="#/main.html"><i class="material-icons">menu</i></a>
+	  		 </div>
+	             </md-button>
+	             <h2>
+	               <span>Database Final Project</span>
+	             </h2>
+	             <span flex></span>
+	             <md-button aria-label="Signin">  
+	  				<a href="#signin"><span>Sign In</span></a> 
+	             </md-button>
+	             <md-button aria-label="Signup">
+	              <a href="#signin"><span>Sign Up</span></a>
+	             </md-button>
+	           </div>
+	         </md-toolbar>
+	     </md-content>
+	  </div>
+  </div>
+	  <div ng-view></div>
 </body>
 </html>

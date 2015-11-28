@@ -14,7 +14,7 @@ angular.module('frontEndApp').controller('MainCtrl', function ($scope,$http) {
 	
 	$scope.primary1Clicked = function(){
 		console.log('Starting http call');
-		$http.get('http://localhost:8010/post_es.php').success(function(data){
+		$http.get('http://127.0.0.1:8010/post_es.php').success(function(data){
 			console.log(data);
 		});
 		
@@ -22,7 +22,7 @@ angular.module('frontEndApp').controller('MainCtrl', function ($scope,$http) {
 	};
 	$scope.primary2Clicked = function(){
 		console.log('Starting http call');
-		$http.get("http://localhost:8010/post_es.php?userid=123456").success(function(data){
+		$http.get("http://127.0.0.1:8010/post_es.php?userid=123456").success(function(data){
 			console.log(data);
 		});
 		

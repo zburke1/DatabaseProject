@@ -59,6 +59,13 @@ body {
   margin-top: 28px;
 }
 
+.signinBox{
+border-radius: 25px;
+    border: 2px solid #000000;
+    padding: 20px; 
+    width: 200px;
+    height: 300px; 
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
