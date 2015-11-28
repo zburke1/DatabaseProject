@@ -21,6 +21,10 @@ angular.module('frontEndApp').controller('productDetailsControl', function ($sco
 			return false;
 		}
 	}
+	
+	$scope.redirectCart = function(){
+		$location.path('/myCart');
+	}
     $scope.openToast = function($event) {
        $mdToast.show($mdToast.simple().textContent('More items requested then in stock!').position('top left')
            .hideDelay(1000));
@@ -32,13 +36,14 @@ angular.module('frontEndApp').controller('productDetailsControl', function ($sco
 			var cartArray = [];
 			var product = {
 				id: $scope.productInfo.prodId,
+				name: $scope.productInfo.name,
 				quantity:$scope.quantity.item,
-				price:$scope.quantity.price
+				price:$scope.productInfo.price
 			}
 			if($scope.quantity.item!=null && $scope.quantity.item!=undefined){
 				cartArray.push(product);
 				sessionService.set('cart',JSON.stringify(cartArray));
-				
+				$location.path('/myCart');
 			}
 			else{
 				$scope.openToast();
@@ -53,12 +58,12 @@ angular.module('frontEndApp').controller('productDetailsControl', function ($sco
 				id: $scope.productInfo.prodId,
 				name: $scope.productInfo.name,
 				quantity:$scope.quantity.item,
-				price:$scope.quantity.price
+				price:$scope.productInfo.price
 			}
 			if($scope.quantity.item!=null && $scope.quantity.item!=undefined){
 				cartArray.push(product);
 				sessionService.set('cart',JSON.stringify(cartArray));
-				
+				$location.path('/myCart');
 			}
 			else{
 				
@@ -71,7 +76,9 @@ angular.module('frontEndApp').controller('productDetailsControl', function ($sco
 			    if($scope.productInfo.prodId === cartArray[i].id){
 				cartArray[i].quantity += $scope.quantity.item;
 				if(cartArray[i].quantity<=$scope.productInfo.stockQuantity){
-					sessionService.set('cart',JSON.stringify(cartArray));}
+					sessionService.set('cart',JSON.stringify(cartArray));
+				$location.path('/myCart');
+				}
 				else{
 					$scope.openToast();
 				}

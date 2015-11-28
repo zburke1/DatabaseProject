@@ -1,3 +1,15 @@
 <div ng-controller="myCartCtrl">
 
+	<center><h2>Products in cart-</h2></center>
+	<div>
+ <div ng-repeat="x in cart" ng-init="addTotalPrice(x.price,x.quantity)">
+	 <center>
+	 {{x.name}} - Item Amount: <b>{{x.quantity}}</b> - Price Each: <b>${{x.price}}</b> <md-button class="md-raised md-warn" ng-click="removeProduct(x.id)">Remove From Cart</md-button></center>
+	 <br> 
+ </div>
+ <center><md-button class="md-raised md-warn" ng-click="removeAll()">Remove All From Cart</md-button></center>
+</div>
+<hr>
+<center><h3>Total Price: ${{prices.x}}</h3></center>
+
 </div>
