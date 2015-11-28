@@ -1,0 +1,21 @@
+<div ng-controller="productDetailsControl">
+
+<div class="mainData" ng-if="checkData()">
+<div>
+	<center><h1>{{productInfo.name}}</h1></center>
+	<center><p>{{productInfo.description}}</p></center>
+	<center><p>In Stock: {{productInfo.stockQuantity}}</p></center>
+	<center><h3>Price: ${{productInfo.price}}</h3></center>
+	<br>	
+</div>
+<div flex layout="row" layout-align="center center" class="mainContent">
+ <div class="cartBox" style="width:40%;">
+ <md-input-container class="md-block">
+       <label>Quantity</label>
+     <input type="number" ng-model="quantity.item" class="quantityRequested" max='{{productInfo.stockQuantity}}'>
+     </md-input-container>
+	 <center><md-button class="md-raised md-primary addToCartButton" ng-click="addToCart()" ng-disabled="isDisabled">Add to Cart</md-button></center>
+ </div>
+</div>
+</div>
+</div>

@@ -39,6 +39,14 @@ var app=angular
         templateUrl: 'views/myAccount.html',
         controller: 'myAccountCtrl'
       })
+      .when('/productDetails', {
+        templateUrl: 'views/productDetails.html',
+        controller: 'productDetailsControl'
+      })
+      .when('/myCart', {
+        templateUrl: 'views/myCart.html',
+        controller: 'myCartCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
