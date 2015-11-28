@@ -5,7 +5,7 @@ header("Content-Type: application/json; charset=UTF-8");
 require_once 'configUsr.php';
 	
 	$product = $_GET['ProductName'];
-	$sql = "SELECT * from product WHERE (lower(name) LIKE '%$product%')";
+	$sql = "SELECT * from product WHERE (lower(name) LIKE '%$product%') ORDER BY price ASC";
 	$result = mysqli_query($connection, $sql) or die("Error in Selecting " . mysqli_error($connection));
 
     //create an array
