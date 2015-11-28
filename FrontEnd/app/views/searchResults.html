@@ -1,0 +1,11 @@
+<div ng-controller="SearchResultsCtrl">
+<div class="mainContent">
+	<center><h2>Products matching search-</h2></center>
+	<div>
+ <div ng-repeat="x in search">
+	 <center>
+	 {{x.name}} - In Stock: {{x.stockQuantity}} - Price: ${{x.price}} <md-button class="md-raised md-primary" ng-click="">View Details</md-button></center>
+	 <br> 
+ </div>
+</div>
+</div>

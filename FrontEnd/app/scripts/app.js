@@ -31,6 +31,14 @@ var app=angular
         templateUrl: 'views/signup.html',
         controller: 'SignUpControl'
       })
+      .when('/search', {
+        templateUrl: 'views/searchResults.html',
+        controller: 'SearchResultsCtrl'
+      })
+      .when('/myAccount', {
+        templateUrl: 'views/myAccount.html',
+        controller: 'myAccountCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

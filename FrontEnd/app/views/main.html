@@ -1,10 +1,13 @@
 <div ng-controller="MainCtrl">
 <div class="mainContent">
-  <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-        <md-button class="md-raised md-primary" ng-click="primary1Clicked()">Primary1</md-button>
-        <md-button class="md-raised md-primary" ng-click="primary2Clicked()">Primary2</md-button>
-        <md-button class="md-raised md-primary">Primary3</md-button>
-        
-      </section>
+ <div flex layout="row" layout-align="center center" class="mainContent">
+  <div class="" style="width:40%;">
+  <md-input-container class="md-block">
+        <label>Search</label>
+        <input class="productSearch">
+      </md-input-container>
+	  <center><md-button class="md-raised md-primary" ng-click="productSearch()">Search</md-button></center>
+  </div>
+</div>
 </div>
 </div>

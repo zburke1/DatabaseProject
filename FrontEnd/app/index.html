@@ -47,7 +47,7 @@
 	              <a href="#signup"><span>Sign Up</span></a>
 	             </md-button>
 	             <md-button aria-label="UserPage" class="userPageButton" ng-if="checkLoggedIn()">
-	              <a href="#accoutHome"><span class="userName">My Account</span></a>
+	              <a href="#myAccount"><span class="userName">My Account</span></a>
 	             </md-button>
 	             <md-button aria-label="UserPage" class="userPageButton" ng-if="checkLoggedIn()">
 	              <span class="userName" ng-click="signUserOut()">Sign Out</span>
@@ -65,5 +65,8 @@
 	  <script src="scripts/controllers/SignUpControl.js"></script>
 	<script src="scripts/controllers/HeaderCtrl.js"></script>
 	<script src="scripts/controllers/sessionService.js"></script>
+	  <script src="scripts/controllers/factories/searchSession.js"></script>
+	   <script src="scripts/controllers/SearchResultsCtrl.js"></script>
+	  <script src="scripts/controllers/myAccountCtrl.js"></script>
 </body>
 </html>
