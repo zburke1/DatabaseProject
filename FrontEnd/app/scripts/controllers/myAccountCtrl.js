@@ -51,7 +51,8 @@ angular.module('frontEndApp').controller('myAccountCtrl', function ($scope,$http
 	
 	$scope.showConfirm = function(ev) {
 	    // Appending dialog to document.body to cover sidenav in docs app
-	    var confirm = $mdDialog.confirm()
+	   
+			var confirm = $mdDialog.confirm()
 	          .title('Would you like to delete your accont?')
 	          .textContent('')
 	          .ariaLabel('Lucky day')
@@ -63,6 +64,7 @@ angular.module('frontEndApp').controller('myAccountCtrl', function ($scope,$http
 	    }, function() {
 	      
 	    });
+	
 	  };
 	
 	$scope.deleteAccount = function(){

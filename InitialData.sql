@@ -1,10 +1,16 @@
 use dbFinal;
 
+drop table contains;
+drop table orders;
+drop table product;
+drop table usr;
+drop table supplier;
+
 CREATE TABLE supplier(supplierId char(6), name char(30) NOT NULL, PRIMARY KEY(supplierId)); 
 CREATE TABLE product(prodId char(6), supplyID char(6),name char(30) NOT NULL, description char(50), active BIT, stockQuantity integer, price real, PRIMARY KEY(prodId),FOREIGN KEY(supplyID) references supplier(supplierId));
-CREATE TABLE orders(OrderId char(6),userId char(20),dateOrder date, paid BIT, PRIMARY KEY(OrderId),FOREIGN KEY(userId) references usr(userId)); 
 CREATE TABLE usr(userId char(20),name char(25) NOT NULL,address char(40),is_staff BIT,email char(25),password char(25) NOT NULL,PRIMARY KEY(userId));
- 
+CREATE TABLE orders(OrderId char(6),userId char(20),dateOrder date, paid BIT, PRIMARY KEY(OrderId),FOREIGN KEY(userId) references usr(userId)); 
+
 
 --Weak Entity Set Tables
 CREATE TABLE contains(OrId char(6),productId char(6),quantity integer NOT NULL, PRIMARY KEY(OrId,productId));
@@ -30,20 +36,21 @@ INSERT into product VALUES('000004','00000b','25ft Ethernet Cable','25 foot cat5
 INSERT into product VALUES('000005','00000c','22 inch LED monitor','22inch monitor with vibrant 1080 resolution',1,'8','179.99');
 INSERT into product VALUES('000006','00000c','20 inch LED Monitor','Our best priced LED monitor. 20inch screen size',0,'0','99.99');
 
---(OrderId,dateOrder,prodcutId,paid)
-INSERT into orders values('111111','2015-11-03',1);
-INSERT into orders values('222222','2015-11-04',1);
-INSERT into orders values('333333','2015-11-02',0);
-INSERT into orders values('444444','2015-11-02',1);
-INSERT into orders values('555555','2015-11-02',1);
 
 
 --(userId,name,address,orderId,is_staff,email,password)
-INSERT into usr values('123456','Zachary','123456 Boogaloo Street','111111',0,'zactestemail@gmail.com','1234');
-INSERT into usr values('223456','Will','1122 Electric Ave','222222',0,'will@email.com','password');
-INSERT into usr values('323456','Nick','Address Madeup','333333',1,'nick@email.com','12345');
-INSERT into usr values('423456','James','Madeup Address Dr','444444',0,'james@email.com','123');
-INSERT into usr values('523456','Earl','1234 Address Blvd','555555',1,'Earle@email.net','987654321');
+INSERT into usr values('123456','Zachary','123456 Boogaloo Street',0,'zactestemail@gmail.com','1234');
+INSERT into usr values('223456','Will','1122 Electric Ave',0,'will@email.com','password');
+INSERT into usr values('323456','Nick','Address Madeup',1,'nick@email.com','12345');
+INSERT into usr values('423456','James','Madeup Address Dr',0,'james@email.com','123');
+INSERT into usr values('523456','Earl','1234 Address Blvd',1,'Earle@email.net','987654321');
+
+--(OrderId,dateOrder,prodcutId,paid)
+INSERT into orders values('111111','123456','2015-11-03',1);
+INSERT into orders values('222222','223456','2015-11-04',1);
+INSERT into orders values('333333','323456','2015-11-02',0);
+INSERT into orders values('444444','423456','2015-11-02',1);
+INSERT into orders values('555555','523456','2015-11-02',1);
 
 --(orderID,productId,prodId,quantity)
 INSERT into contains values('111111','000001','3');

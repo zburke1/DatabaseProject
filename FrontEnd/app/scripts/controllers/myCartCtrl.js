@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('frontEndApp').controller('myCartCtrl', function ($scope,$http,$route,sessionService,productIdSession,$location,$window) {
+angular.module('frontEndApp').controller('myCartCtrl', function ($scope,$http,$route,$mdDialog,sessionService,productIdSession,$location,$window) {
 	
 	$scope.prices = {
 		x:0
@@ -35,4 +35,54 @@ angular.module('frontEndApp').controller('myCartCtrl', function ($scope,$http,$r
 		sessionService.destroy('cart');
 		$route.reload();
 }
+
+
+
+
+$scope.alertPay = function(ev){
+	var paid = $('.paidInput').val();
+	 if(paid==$scope.prices.x){
+		 var confirm = $mdDialog.confirm()
+      .title('Are you sure you want to purchase these items')
+      .textContent('')
+      .ariaLabel('Lucky day')
+      .targetEvent(ev)
+      .ok('Yes')
+      .cancel('Cancel');
+$mdDialog.show(confirm).then(function() {
+	
+}, function() {
+  
+});
+}
+else{
+	    $mdDialog.show(
+	      $mdDialog.alert()
+	        .clickOutsideToClose(true)
+	        .title('You must pay the proper ammount')
+	        .ariaLabel('Alert Dialog Demo')
+	        .ok('Got it!')
+	        .targetEvent(ev)
+	    );
+	  }
+}
+
+
+$scope.placePurchase = function(){
+	
+	
+	
+	
+}
+
+
+
+
+
   });
+
+
+
+
+
+

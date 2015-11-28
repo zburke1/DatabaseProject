@@ -12,4 +12,17 @@
 <hr>
 <center><h3>Total Price: ${{prices.x}}</h3></center>
 
+
+<div flex layout="row" layout-align="center center" class="mainContent">
+ <div class="cartBox" style="width:40%;">
+ <md-input-container class="md-block">
+       <label>Pay</label>
+     <input class="paidInput" step="0.01" type="number" max='{{prices.x}}' ng-model="paid.value">
+     </md-input-container>
+	 <center><md-button class="md-raised md-primary" ng-click="alertPay()" ng-disabled="isDisabled">Pay</md-button></center>
+ 
+ </div>
+ </div>
+ 
+ 
 </div>
