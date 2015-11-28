@@ -11,6 +11,10 @@ angular.module('frontEndApp').controller('SignInControl', function ($scope,$http
 	if(sessionService.get('uid')!=null){
 		$location.path('/');
 	}
+	
+	$scope.SignUpRedirect = function(){
+		$location.path('/signup');
+	}
 
 	/* Check whether the HTTP Request is successful or not. */
 	$scope.signInPost = function(){
@@ -24,5 +28,5 @@ angular.module('frontEndApp').controller('SignInControl', function ($scope,$http
 		var landingUrl = "http://localhost:9000/"; //URL complete
 		$window.location.href = landingUrl;
   });
-};
+}
   });

@@ -2,13 +2,13 @@
 <div ng-controller="SignInControl">
 
  <center><h2>Sign-In</h2></center>
-<div flex layout="row" layout-align="center" class="mainContent">
+<div flex layout="row" layout-align="center center" class="mainContent">
  <div class="signinBox" style="width:40%;">
- <md-input-container>
+ <md-input-container class="md-block">
        <label>User Name</label>
        <input ng-model="user.name" class="userID">
      </md-input-container>
-	 <md-input-container>
+	 <md-input-container class="md-block">
 	       <label>Password</label>
 	       <input type="password" ng-model="user.password" class="userPassword">
 	     </md-input-container>
