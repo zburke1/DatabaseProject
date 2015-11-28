@@ -7,8 +7,10 @@
  * # MainCtrl
  * Controller of the frontEndApp
  */
-angular.module('frontEndApp').controller('SignInControl', function ($scope,$http,sessionService) {
-	
+angular.module('frontEndApp').controller('SignInControl', function ($scope,$http,$location,$route,$window,sessionService) {
+	if(sessionService.get('uid')!=null){
+		$location.path('/');
+	}
 
 	/* Check whether the HTTP Request is successful or not. */
 	$scope.signInPost = function(){
@@ -18,8 +20,9 @@ angular.module('frontEndApp').controller('SignInControl', function ($scope,$http
 		
 	$.post( "http://127.0.0.1:8010/signInPost.php", {userId: userID, password: userPass}).done(function(data) {
 		sessionService.set('uid',data[0].userId);
-		$location.path('/home');
-		console.log(data);
+		sessionService.set('name',data[0].name);
+		var landingUrl = "http://localhost:9000/"; //URL complete
+		$window.location.href = landingUrl;
   });
 };
   });

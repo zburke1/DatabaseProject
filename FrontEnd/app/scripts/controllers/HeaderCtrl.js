@@ -7,6 +7,27 @@
  * # MainCtrl
  * Controller of the frontEndApp
  */
-angular.module('frontEndApp').controller('HeaderCtrl', function ($scope,$http) {
-
+angular.module('frontEndApp').controller('HeaderCtrl', function ($scope,$http,sessionService,$location,$window) {
+	if(sessionService.get('uid')!=null){
+		$('.signinButton').hide();
+		$('.signupButton').hide();
+	}
+	else{
+		// $('.userPageButton').style.display = "inline";
+	}
+	
+	$scope.checkLoggedIn = function(){
+		if(sessionService.get('uid')!=null){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	$scope.signUserOut = function(){
+		sessionService.destroy('uid');
+		sessionService.destroy('name');
+		$location.path('/');
+		$window.location.reload();
+	}
   });

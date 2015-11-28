@@ -20,6 +20,7 @@ if(!isset($_SESSION['user_id'])){
     }
 	$num_rows = $result->num_rows;
 	if($num_rows==1){
+		session_start();
 	    $_SESSION['user_id'] = $_POST['user_id'];
 		
 		echo json_encode($emparray);

@@ -2,8 +2,8 @@ use dbFinal;
 
 CREATE TABLE supplier(supplierId char(6), name char(30) NOT NULL, PRIMARY KEY(supplierId)); 
 CREATE TABLE product(prodId char(6), supplyID char(6),name char(30) NOT NULL, description char(50), active BIT, stockQuantity integer, price real, PRIMARY KEY(prodId),FOREIGN KEY(supplyID) references supplier(supplierId));
-CREATE TABLE orders(OrderId char(6),dateOrder date, paid BIT, PRIMARY KEY(OrderId)); 
-CREATE TABLE usr(userId char(20),name char(25) NOT NULL,address char(40),orderId char(6),is_staff BIT,email char(25),password char(25) NOT NULL,PRIMARY KEY(userId),FOREIGN KEY(orderId) references orders(OrderId));
+CREATE TABLE orders(OrderId char(6),userId char(20),dateOrder date, paid BIT, PRIMARY KEY(OrderId),FOREIGN KEY(userId) references usr(userId)); 
+CREATE TABLE usr(userId char(20),name char(25) NOT NULL,address char(40),is_staff BIT,email char(25),password char(25) NOT NULL,PRIMARY KEY(userId));
  
 
 --Weak Entity Set Tables
