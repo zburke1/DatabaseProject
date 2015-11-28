@@ -7,7 +7,6 @@ require_once 'configUsr.php';
 if(!isset($_SESSION['user_id'])){
 	$userIdStored = $_POST['userId'];
 	$password_stored = $_POST['password'];
-	
 	if(isset($_POST['userId']) && isset($_POST['password'])){
  	$query = "SELECT userId,name,address,orderId,is_staff,email from usr where userId='$userIdStored' AND password='$password_stored'";
 	$result = mysqli_query($connection, $query) or die("Error in Selecting " . mysqli_error($connection));
