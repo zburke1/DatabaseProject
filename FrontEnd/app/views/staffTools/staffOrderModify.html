@@ -1,0 +1,22 @@
+<div ng-controller="staffOrderCtrl" ng-init="getOrderInfo()">
+ 
+	 <center>
+	  <h2>Order ID: {{orderSelected.OrderId}} - Placed by {{orderSelected.userId}} On: {{orderSelected.dateOrder}} </h2>
+	  <br>
+	  <div class="wasPaid"><h4>Currently, this order has been paid</h4></div>
+	  <div class="wasNotPaid"><h4>Currently, this order has NOT been paid</h4></div>
+	  </center>
+	 
+	 <div flex layout="row" layout-align="center center" class="mainContent">
+	  <div class="cartBox" style="width:40%;">
+		<md-input-container class="md-block">
+		<center><md-checkbox class="staffCheckbox" aria-label="Checkbox 1" ng-model="has_paid">
+		          Paid
+		        </md-checkbox></center>
+				
+	 	 <center><md-button class="md-raised md-primary" ng-click="updatePaid(orderSelected.OrderId)">Update</md-button></center>
+ 		</md-input-container>
+	  </div>
+	  </div>
+
+</div>

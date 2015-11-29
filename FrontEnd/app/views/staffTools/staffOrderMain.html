@@ -1,0 +1,16 @@
+<div ng-controller="staffOrderCtrl">
+<div class="mainContent" ng-init="getAllOrders()">
+	<center><h2>All Orders-</h2></center>
+	<div>
+ <div ng-repeat="x in orders">
+	 <center>
+	  Order ID: {{x.OrderId}} - User: {{x.userId}} - Placed On: {{x.dateOrder}} - Paid: <b>{{x.paid}}</b> 
+	   <md-button class="md-raised md-primary" ng-click="modifyOrderButton(x)">Modify Order</md-button> 
+	  <md-button class="md-raised md-warn" ng-click="removeOrderPrompt(x,x.OrderId)">Remove Product</md-button></center>
+	 
+	 <br> 
+ </div>
+ <!-- <center><md-button class="md-raised md-primary" ng-click="createProductButton()">Add Product</md-button></center> -->
+</div>
+
+</div>

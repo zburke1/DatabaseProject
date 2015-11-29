@@ -75,6 +75,14 @@ var app=angular
         templateUrl: 'views/staffTools/staffProductCreate.html',
 		  controller: 'staffProductCtrl'
       })
+      .when('/OrderManagement', {
+        templateUrl: 'views/staffTools/staffOrderMain.html',
+		  controller: 'staffOrderCtrl'
+      })
+      .when('/ModifyOrder', {
+        templateUrl: 'views/staffTools/staffOrderModify.html',
+		  controller: 'staffOrderCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

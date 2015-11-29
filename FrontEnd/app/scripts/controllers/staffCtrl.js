@@ -33,7 +33,7 @@ angular.module('frontEndApp').controller('staffCtrl', function ($scope,$http,$lo
 	}
 	
 	$scope.goOrdersMain = function(){
-		
+		$location.path('/OrderManagement');
 	}
 	
 	$scope.goProductsMain = function(){
@@ -56,7 +56,7 @@ angular.module('frontEndApp').controller('staffCtrl', function ($scope,$http,$lo
 	});
   }, function() {
     //Cancel function
-  })
+  });
 	  }
 	  else{
   	    $mdDialog.show(
