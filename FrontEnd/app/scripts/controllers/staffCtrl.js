@@ -33,7 +33,7 @@ angular.module('frontEndApp').controller('staffCtrl', function ($scope,$http,$lo
 	}
 	
 	$scope.goProductsMain = function(){
-		
+		$location.path('/staffProduct');
 	}
 	
 	$scope.deleteAccount = function(userIdPassed,ev){

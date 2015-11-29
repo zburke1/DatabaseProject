@@ -1,0 +1,60 @@
+<div ng-controller="staffProductCtrl">
+<div class="mainContent">
+	<center><h2>Create New Product-</h2></center>
+ 
+ 
+ <div flex layout="row" layout-align="center center" class="mainContent">
+  <div class="signupBox" style="width:40%;">
+	  <md-input-container class="md-block">
+	          <label>Name</label>
+	          <input ng-model="productCreate.name" maxlength="30">
+	        </md-input-container>
+			<md-input-container class="md-block">
+			        <label>Supplier</label>
+	  <md-select ng-model="productCreate.supplierId">
+	            <md-option ng-repeat="x in suppliers" value="{{x.supplierId}}">
+	              {{x.name}}
+	            </md-option>
+	          </md-select>
+		  </md-input-container>
+		  <md-input-container class="md-block">
+		          <label>Description</label>
+		          <input type="text" ng-model="productCreate.description" maxlength="50">
+		        </md-input-container>
+  		  <md-input-container>
+  		          <label>Quantity</label>
+  		          <input type="number" ng-model="productCreate.quantity">
+  		        </md-input-container>	
+	    		  <md-input-container>
+	    		          <label>Price</label>
+	    		          <input type="number" ng-model="productCreate.price">
+	    		        </md-input-container>
+  <!-- <md-input-container class="md-block">
+        <label>Name</label>
+        <input ng-model="user.name" class="userName">
+      </md-input-container>
+ 	 <md-input-container class="md-block">
+ 	       <label>User Account</label>
+ 	       <input ng-model="user.userId" class="userID">
+ 	     </md-input-container>
+ 	 <md-input-container class="md-block">
+ 	       <label>Password</label>
+ 	       <input type="password" ng-model="user.password" class="userPassword">
+ 	     </md-input-container>
+ 		 <md-input-container class="md-block">
+ 		       <label>Address</label>
+ 		       <input ng-model="user.address" class="userAddress">
+ 		     </md-input-container>
+ 			 <md-input-container class="md-block">
+ 			       <label>Email</label>
+ 			       <input ng-model="user.email" class="userEmail">
+ 			     </md-input-container> -->
+ 	 <center><md-button class="md-raised md-primary" ng-click="createProduct()">Create Product</md-button></center>
+	
+  </div>
+ </div>
+ 
+ 
+</div>
+
+</div>

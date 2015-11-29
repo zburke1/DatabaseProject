@@ -1,0 +1,14 @@
+<div ng-controller="staffProductCtrl">
+<div class="mainContent">
+	<center><h2>All Products-</h2></center>
+	<div>
+ <div ng-repeat="x in products">
+	 <center>
+	  Product Name: {{x.name}} - Product Id: {{x.prodId}} - Supplier: {{x.supplierName}} - In Stock: <b>{{x.stockQuantity}}</b> <md-button class="md-raised md-primary" ng-click="addStockButton(x)">Add Stock</md-button><md-button class="md-raised md-warn" ng-click="deleteAccount(x.userId)">Remove Product</md-button></center>
+	 
+	 <br> 
+ </div>
+ <center><md-button class="md-raised md-primary" ng-click="createProductButton()">Add Product</md-button></center>
+</div>
+
+</div>

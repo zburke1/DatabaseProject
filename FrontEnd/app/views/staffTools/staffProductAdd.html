@@ -1,0 +1,15 @@
+<div ng-controller="staffProductCtrl">
+<center><h3>Add stock to {{productSelected.name}}</h3></center>
+<center><h4>Ordering from {{productSelected.supplierName}}</h4></center>
+<center><p>Current levels at <b>{{productSelected.stockQuantity}}</b></p></center>
+<div flex layout="row" layout-align="center center" class="mainContent">
+ <div class="cartBox" style="width:40%;">
+	 <md-input-container class="md-block">
+	       <label>Add</label>
+	     <input class="addAmount" step="1" type="number" ng-model="stock.addAmount">
+	     </md-input-container>
+		 <center><md-button class="md-raised md-primary" ng-click="addStock(stock.addAmount)">Add</md-button></center>
+ </div>
+</div>
+
+</div>
