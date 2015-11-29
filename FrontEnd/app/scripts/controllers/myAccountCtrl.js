@@ -31,7 +31,7 @@ angular.module('frontEndApp').controller('myAccountCtrl', function ($scope,$http
 					$scope.openToastSuccess();
 				}
 				else{
-					$scope.openToastSuccess();
+					$scope.openToastFail();
 				}
 		  });
 		  
@@ -43,7 +43,7 @@ angular.module('frontEndApp').controller('myAccountCtrl', function ($scope,$http
 					$scope.openToastSuccess();
 				}
 				else{
-					$scope.openToastSuccess();
+					$scope.openToastFail();
 				}
 		  });
 		}

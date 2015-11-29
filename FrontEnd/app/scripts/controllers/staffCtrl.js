@@ -7,7 +7,16 @@ angular.module('frontEndApp').controller('staffCtrl', function ($scope,$http,$lo
  	$.post("http://127.0.0.1:8010/getAllUsr.php",{isStaff:isStaff}).done(function(data) {
 		$scope.users = data;
   	});
+	
 	$scope.user = userIdSession.get();
+	
+	if($scope.user.is_staff==1){
+		$scope.is_staff = true;
+	}
+	else{
+		$scope.is_staff = false;
+		}
+	
 	$scope.goUserMain = function(){
 		$location.path('/staffUserMain');
 	}
@@ -68,7 +77,7 @@ angular.module('frontEndApp').controller('staffCtrl', function ($scope,$http,$lo
 		$.post( "http://127.0.0.1:8010/signUpPost.php", {userId: userID, password: userPassword,email:userEmail,name:userName,address:userAddress}).done(function(data) {
 			console.log(data);
 			if(data==1){
-				$location.path('/staffUserMain')
+				$location.path('/staffUserMain');
 			}
 			else if(data==2){
 				$scope.openToast();	
@@ -91,31 +100,27 @@ $scope.openToast = function($event) {
 ///////////////////////////////
  
 $scope.updateAccount = function(){
-	
-	if($scope.user.password=="QAZWSXEDC"){
-		$.post( "http://127.0.0.1:8010/updateAccount.php", {userId: $scope.user.userId,name:$scope.user.name,email:$scope.user.email,address:$scope.user.address}).done(function(data) {
-			if(data==1){
-				sessionService.set('name',$scope.user.name);
-				$scope.openToastSuccess();
-			}
-			else{
-				$scope.openToastSuccess();
-			}
-	  });
-	  
+	if($scope.is_staff){
+	    var localStaff = 1;
 	}
 	else{
-		$.post( "http://127.0.0.1:8010/updateAccount.php", {userId: $scope.user.userId,name:$scope.user.name,email:$scope.user.email,address:$scope.user.address,password:$scope.user.password}).done(function(data) {
-			if(data==1){
-				sessionService.set('name',$scope.user.name);
-				$scope.openToastSuccess();
-			}
-			else{
-				$scope.openToastSuccess();
-			}
-	  });
+		var localStaff = 0;
 	}
+		
+		$.post( "http://127.0.0.1:8010/updateAccount.php", {userId: $scope.user.userId,name:$scope.user.name,email:$scope.user.email,address:$scope.user.address, is_staff:localStaff}).done(function(data) {
+			$location.path('/staffUserMain');
+	  });
 };
+
+$scope.isStaff = function(){
+	
+	if($scope.user.is_staff==1){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
 	
 	
 	

@@ -11,6 +11,9 @@
 		          <label>User Name</label>
 		          <input ng-model="user.userId" class="userName" disabled>
 		        </md-input-container>
+				<md-checkbox class="staffCheckbox" aria-label="Checkbox 1" ng-model="is_staff">
+				          Is Staff
+				        </md-checkbox>
 		   	 <!-- <md-input-container class="md-block">
 		   	       <label>Password</label>
 		   	       <input type="password" ng-model="user.password" class="userPassword">
@@ -23,7 +26,7 @@
 	       <label>Email</label>
 	       <input ng-model="user.email" class="userEmail">
 	     </md-input-container>
-		  <center><md-button class="md-raised md-warn" ng-click="showConfirm()">Delete Account</md-button></center>
+		  <center><md-button class="md-raised md-primary" ng-click="updateAccount()">Update</md-button></center>
 </div>
 </div>
 </div>
