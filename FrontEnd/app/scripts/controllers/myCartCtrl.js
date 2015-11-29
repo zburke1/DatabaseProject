@@ -71,7 +71,6 @@ else{
 $scope.placePurchase = function(){
 		var userId = sessionService.get('uid');
 		$.post( "http://127.0.0.1:8010/makePurchase.php", {userId: userId}).done(function(data) {
-			//console.log(data);
 			if(data!=0){
 				$scope.finishPurchase(data);
 			}
@@ -88,15 +87,27 @@ $scope.finishPurchase = function(orderIdPassed){
 	$.post( "http://127.0.0.1:8010/makePurchase.php", {orderId: orderIdPassed,contains:'1',productId:cartArray[i].id,quantity:cartArray[i].quantity}).done(function(data) {
 		//console.log(data);
 		if(data==1){
-			console.log('Contains entered');
-			sessionService.destroy('cart');
-			$location.path('/');
+			 console.log('Contains entered');
+// 			sessionService.destroy('cart');
+// 			$location.path('/');
 		}
-});
+});	
 }
-		
+	$scope.decrementStock();
+}	
+$scope.decrementStock = function(){
+	var cartArray = $scope.cart;
+	for(var i = 0; i < cartArray.length;i++){
+	$.post( "http://127.0.0.1:8010/makePurchase.php", {decrement: '1',productId:cartArray[i].id,stockQuantity:cartArray[i].quantity}).done(function(data) {
+		//console.log(data);
+		if(data==1){
+			console.log('Decrement finished');
+		}
+});	
 }
-
+			sessionService.destroy('cart');
+			$route.reload();
+}
 
 
 

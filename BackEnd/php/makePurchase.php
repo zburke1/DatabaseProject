@@ -4,7 +4,7 @@ header("Content-Type: application/json; charset=UTF-8");
 
 require_once 'configUsr.php';
 	date_default_timezone_set('EST');
-	if(!isset($_POST['contains'])){
+	if(!isset($_POST['contains']) && !isset($_POST['decrement'])){
 	$orderId = rand(1,999999);
 	$date = date("Y-m-d");
 	$userId = $_POST['userId'];
@@ -19,7 +19,7 @@ require_once 'configUsr.php';
 		 echo json_encode('0');
 	}
 }
-else{
+else if(isset($_POST['contains']) && !isset($_POST['decrement'])){
 		$orderId = $_POST['orderId'];
 		$productId = $_POST['productId'];
 		$quantity = $_POST['quantity'];
@@ -35,6 +35,16 @@ else{
 		}
 }
 	//echo $orderId;
-	
+	else if(!isset($_POST['contains']) && isset($_POST['decrement'])){
+		$productId = $_POST['productId'];
+		$quantity = $_POST['stockQuantity'];
+		$sqlDec = "UPDATE product SET stockQuantity= stockQuantity - '$quantity' WHERE prodId='$productId'";
+		if ($connection->query($sqlDec) === TRUE) {
+		    echo json_encode('1');
+		} else {
+		   echo json_encode('0') ;
+		}
+		
+	}
 	
 ?>

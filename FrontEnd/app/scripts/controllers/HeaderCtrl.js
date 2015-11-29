@@ -24,9 +24,19 @@ angular.module('frontEndApp').controller('HeaderCtrl', function ($scope,$http,se
 			return false;
 		}
 	}
+	$scope.checkStaff = function(){
+		if(sessionService.get('staff')!=null){
+			return true;
+		}
+		else{
+			return false;
+		}
+		
+	}
 	$scope.signUserOut = function(){
 		sessionService.destroy('uid');
 		sessionService.destroy('name');
+		sessionService.destroy('staff');
 		$location.path('/');
 		$window.location.reload();
 	}

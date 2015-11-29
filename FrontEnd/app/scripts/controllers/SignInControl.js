@@ -18,13 +18,15 @@ angular.module('frontEndApp').controller('SignInControl', function ($scope,$http
 
 	/* Check whether the HTTP Request is successful or not. */
 	$scope.signInPost = function(){
-		this.userID = $(".userID").val();
-		this.userPass = $(".userPassword").val();
-		console.log(this.userID + "" + this.userPass);
+		var userID = $(".userID").val();
+		var userPass = $(".userPassword").val();
+		//console.log(userID + "" + userPass);
 		
-	$.post( "http://127.0.0.1:8010/signInPost.php", {userId: this.userID, password: this.userPass}).done(function(data) {
+	$.post("http://127.0.0.1:8010/signInPost.php", {userId: userID, password: userPass}).done(function(data) {
+		console.log("Finished");
 		sessionService.set('uid',data[0].userId);
 		sessionService.set('name',data[0].name);
+		sessionService.set('staff',data[0].is_staff);
 		var landingUrl = "http://localhost:9000/"; //URL complete
 		$window.location.href = landingUrl;
   });
