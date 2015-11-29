@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('frontEndApp').controller('staffCtrl', function ($scope,$http,$location,$mdDialog,$route,storeSearch,sessionService,userIdSession) {
+angular.module('frontEndApp').controller('staffCtrl', function ($scope,$http,$location,$mdDialog,$mdToast,$route,storeSearch,sessionService,userIdSession) {
 	
 	var isStaff = sessionService.get('staff');
 
@@ -10,17 +10,21 @@ angular.module('frontEndApp').controller('staffCtrl', function ($scope,$http,$lo
 	
 	$scope.user = userIdSession.get();
 	
+	if($scope.user != null){
 	if($scope.user.is_staff==1){
 		$scope.is_staff = true;
 	}
 	else{
 		$scope.is_staff = false;
 		}
+		}
 	
 	$scope.goUserMain = function(){
 		$location.path('/staffUserMain');
 	}
 	$scope.goCreateUser = function(){
+		$scope.user = null;
+		$scope.user = userIdSession.set(null);
 		$location.path('/staffUserAdd');
 	}
 	$scope.goModifyUser = function(user){
@@ -107,8 +111,11 @@ $scope.updateAccount = function(){
 		var localStaff = 0;
 	}
 		
-		$.post( "http://127.0.0.1:8010/updateAccount.php", {userId: $scope.user.userId,name:$scope.user.name,email:$scope.user.email,address:$scope.user.address, is_staff:localStaff}).done(function(data) {
+		$.post( "http://127.0.0.1:8010/updateAccount.php", {userId: $scope.user.userId,name:$scope.user.name,email:$scope.user.email,address:$scope.user.address, is_staff:localStaff}).always(function(data) {
 			$location.path('/staffUserMain');
+			
+	  }).always(function(data){
+	  	$scope.user = [];
 	  });
 };
 
