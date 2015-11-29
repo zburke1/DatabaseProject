@@ -7,7 +7,7 @@ angular.module('frontEndApp').controller('myCartCtrl', function ($scope,$http,$r
 	}
 	
 	
-	$scope.cart = JSON.parse(sessionService.get('cart'));;
+	$scope.cart = JSON.parse(sessionService.get('cart'));
 	
 	$scope.addTotalPrice = function(price,quantity){
 		var tempPrice = parseFloat($scope.prices.x);
@@ -50,7 +50,7 @@ $scope.alertPay = function(ev){
       .ok('Yes')
       .cancel('Cancel');
 $mdDialog.show(confirm).then(function() {
-	
+	$scope.placePurchase();
 }, function() {
   
 });
@@ -69,12 +69,33 @@ else{
 
 
 $scope.placePurchase = function(){
-	
+		var userId = sessionService.get('uid');
+		$.post( "http://127.0.0.1:8010/makePurchase.php", {userId: userId}).done(function(data) {
+			//console.log(data);
+			if(data!=0){
+				$scope.finishPurchase(data);
+			}
+    });
 	
 	
 	
 }
 
+$scope.finishPurchase = function(orderIdPassed){
+	console.log(orderIdPassed);
+	var cartArray = $scope.cart;
+	for(var i = 0; i < cartArray.length;i++){
+	$.post( "http://127.0.0.1:8010/makePurchase.php", {orderId: orderIdPassed,contains:'1',productId:cartArray[i].id,quantity:cartArray[i].quantity}).done(function(data) {
+		//console.log(data);
+		if(data==1){
+			console.log('Contains entered');
+			sessionService.destroy('cart');
+			$location.path('/');
+		}
+});
+}
+		
+}
 
 
 

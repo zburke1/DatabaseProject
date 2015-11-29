@@ -44,6 +44,7 @@ INSERT into usr values('223456','Will','1122 Electric Ave',0,'will@email.com','p
 INSERT into usr values('323456','Nick','Address Madeup',1,'nick@email.com','12345');
 INSERT into usr values('423456','James','Madeup Address Dr',0,'james@email.com','123');
 INSERT into usr values('523456','Earl','1234 Address Blvd',1,'Earle@email.net','987654321');
+INSERT into usr values('zburke1','zac','1234 Address Blvd',1,'zac@email.net','1234');
 
 --(OrderId,dateOrder,prodcutId,paid)
 INSERT into orders values('111111','123456','2015-11-03',1);
