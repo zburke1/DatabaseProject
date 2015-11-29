@@ -14,7 +14,7 @@ while($row =mysqli_fetch_assoc($result)){
 echo json_encode($emparray);
 }
 else if(isset($_POST['isStaff']) && !isset($_POST['lowCheck']) && isset($_POST['searchAll'])){
-	$query = "SELECT product.*, supplier.name AS supplierName from product INNER JOIN supplier ON product.supplyID=supplier.supplierId";
+	$query = "SELECT product.*, supplier.name AS supplierName from product INNER JOIN supplier ON product.supplyID=supplier.supplierId ORDER BY product.stockQuantity ASC";
 
 	$result = mysqli_query($connection, $query) or die("Error in Selecting " . mysqli_error($connection));
 	$emparray = array();
