@@ -3,12 +3,21 @@
 
 angular.module('frontEndApp').controller('myAccountCtrl', function ($scope,$http,$location,$window,$mdToast,$mdDialog,storeSearch,sessionService) {
 	//console.log(storeSearch.get());
+	
+	
+	
+	
+	$scope.viewMyOrders = false;
+	$scope.viewUpdate = false;
 	this.userId = sessionService.get('uid');
 	if(this.userId!=null){
 	$.get( "http://127.0.0.1:8010/getUsr.php", {userName: this.userId}).done(function(data) {
 		$scope.user = data[0];
 		$scope.user.password = "QAZWSXEDC";
   });
+	$.get( "http://127.0.0.1:8010/getUserOrders.php", {userId: this.userId}).done(function(data) {
+		$scope.userOrders = data;
+	});
 	}
 	
     $scope.openToastSuccess = function($event) {
@@ -21,6 +30,16 @@ angular.module('frontEndApp').controller('myAccountCtrl', function ($scope,$http
             .hideDelay(4000));
         // Could also do $mdToast.showSimple('Hello');
       };
+	  
+	  $scope.viewMyOrdersPressed = function(){
+		  $scope.viewMyOrders = !$scope.viewMyOrders;
+		  $scope.viewUpdate = false;
+	  }
+	  
+	  $scope.viewUpdateAccount = function(){
+		  $scope.viewUpdate = !$scope.viewUpdate;
+		  $scope.viewMyOrders = false;
+	  }
 	
 	$scope.updateAccount = function(){
 		
@@ -29,6 +48,7 @@ angular.module('frontEndApp').controller('myAccountCtrl', function ($scope,$http
 				if(data==1){
 					sessionService.set('name',$scope.user.name);
 					$scope.openToastSuccess();
+					$scope.viewUpdate = false;
 				}
 				else{
 					$scope.openToastFail();
@@ -41,6 +61,7 @@ angular.module('frontEndApp').controller('myAccountCtrl', function ($scope,$http
 				if(data==1){
 					sessionService.set('name',$scope.user.name);
 					$scope.openToastSuccess();
+					$scope.viewUpdate = false;
 				}
 				else{
 					$scope.openToastFail();

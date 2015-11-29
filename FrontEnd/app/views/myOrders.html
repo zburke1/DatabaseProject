@@ -1,25 +1,8 @@
 <div ng-controller="myAccountCtrl">
 <div class="mainContent">
-	<center><md-button class="md-raised md-primary" ng-click="viewMyOrdersPressed()">View Purchased Orders</md-button></center>
-	<Br>
-		<center><md-button class="md-raised md-primary" ng-click="viewUpdateAccount()">Update Account</md-button></center>
-		<Br><br>
-	
-	<!--                         VIEW ORDERS DIV                        -->
-	<div flex layout="row" layout-align="center center" class="mainContent" ng-if="viewMyOrders">
-	 <div class="" style="width:40%;">
-		 <center><h2>Orders Purchased:</h2></center>
-		 <div ng-repeat="x in userOrders">
-			 <center>
-			 OrderID#: {{x.OrderId}} - Item Purchased: {{x.productNAME}} - Price Each: ${{x.productPRICE}} - Quantity Purchased: {{x.quantity}} </center>
-			 <br> 
-		 </div>
-		 
-		 
-	 </div>
- </div>		
-<!--                         UPDATE ACCCOUNT DIV                        -->
-	<div flex layout="row" layout-align="center center" class="mainContent" ng-if="viewUpdate">
+	<center><md-button class="md-raised md-primary" ng-click="">View Purchased Orders</md-button></center>
+	<Br><br>
+	<div flex layout="row" layout-align="center center" class="mainContent">
 	 <div class="signupBox" style="width:40%;">
 	
 	    <md-input-container class="md-block">
