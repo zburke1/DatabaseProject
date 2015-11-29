@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the frontEndApp
  */
-angular.module('frontEndApp').controller('staffProductCtrl', function ($scope,$http,$location,$mdDialog,storeSearch,sessionService,productIdSession) {
+angular.module('frontEndApp').controller('staffProductCtrl', function ($scope,$http,$location,$route,$mdDialog,storeSearch,sessionService,productIdSession) {
  	var isStaff = sessionService.get('staff');
 	$scope.productSelected = productIdSession.get();
 	$scope.stock= {
@@ -57,8 +57,8 @@ angular.module('frontEndApp').controller('staffProductCtrl', function ($scope,$h
 			console.log(pDescription);
 		if(pSupplierId!=0){
 			$.post("http://127.0.0.1:8010/createProduct.php",{supplyId:pSupplierId,name:pName,descrip:pDescription,quantity:pQuantity,price:pPrice}).done(function(data) {
-				console.log(data);
-				//$location.path('/staffProduct');
+				//console.log(data);
+				$location.path('/staffProduct');
 		  	});
 		}
 		else{
@@ -66,4 +66,43 @@ angular.module('frontEndApp').controller('staffProductCtrl', function ($scope,$h
 		}
 	}
 	
+	$scope.deleteProductPrompt = function(productId,ev){
+	var confirm = $mdDialog.confirm()
+        .title('Would you like to delete this product?')
+        .textContent('All orders associated with this product will be deleted')
+        .ariaLabel('Lucky day')
+        .targetEvent(ev)
+        .ok('Delete it!')
+        .cancel('Cancel');
+  $mdDialog.show(confirm).then(function() {
+	$scope.deleteProduct(productId);
+  }, function() {
+    
+  })
+	};
+	
+	$scope.deleteProduct = function(productId){
+		
+		$.post("http://127.0.0.1:8010/deleteProduct.php",{prodId:productId}).done(function(data) {
+			//console.log(data);
+			$route.reload();
+	  	});
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
   });
+  
+  
+  
+  
+  
+  
+  
+  
