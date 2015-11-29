@@ -1,0 +1,14 @@
+<div ng-controller="staffCtrl">
+<div class="mainContent">
+	<center><h2>All users-</h2></center>
+	<div>
+ <div ng-repeat="x in users">
+	 <center>
+	  UserId: {{x.userId}} - Name: {{x.name}} - Staff: {{x.is_staff}} <md-button class="md-raised md-primary" ng-click="viewProduct(x.userId)">Modify User</md-button><md-button class="md-raised md-warn" ng-click="deleteAccount(x.userId)">Delete User</md-button></center>
+	 
+	 <br> 
+ </div>
+ <center><md-button class="md-raised md-primary" ng-click="goCreateUser()">Add User</md-button></center>
+</div>
+
+</div>

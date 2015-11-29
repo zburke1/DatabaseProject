@@ -47,6 +47,18 @@ var app=angular
         templateUrl: 'views/myCart.html',
         controller: 'myCartCtrl'
       })
+      .when('/staffTools', {
+        templateUrl: 'views/staffTools/staffTools.html',
+		  controller: 'staffCtrl'
+      })
+      .when('/staffUserMain', {
+        templateUrl: 'views/staffTools/staffUserMain.html',
+		  controller: 'staffCtrl'
+      })
+      .when('/staffUserAdd', {
+        templateUrl: 'views/staffTools/createUser.html',
+		  controller: 'staffCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
