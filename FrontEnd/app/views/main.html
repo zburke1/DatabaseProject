@@ -15,7 +15,7 @@
     <div flex layout="row" layout-align="center center" class="mainContent">
      <div class="" style="width:60%; background: #ff8a80; border: 2px solid #000000;">
 	    <div ng-repeat="x in lowstock">
-	   	 <center>{{x.name}} is running low on stock! </center>
+	   	 <center>The {{x.name}} from {{x.supplierName}} is running low on stock! </center>
 		 <center>There are {{x.stockQuantity}} left.</center>
 		 <hr>
 	    </div>

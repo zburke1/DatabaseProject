@@ -11,7 +11,7 @@ angular.module('frontEndApp').controller('MainCtrl', function ($scope,$http,$loc
 	
 	var staffCheck = sessionService.get('staff');
 	if(staffCheck!=null){
-	$.post( "http://127.0.0.1:8010/lowStockCheck.php", {isStaff: staffCheck}).done(function(data) {
+	$.post( "http://127.0.0.1:8010/lowStockCheck.php", {isStaff: staffCheck,lowCheck:'1'}).done(function(data) {
 		$scope.setStock(data);
 	});
 	
