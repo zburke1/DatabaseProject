@@ -14,7 +14,7 @@
        <label>Quantity</label>
      <input type="number" ng-model="quantity.item" class="quantityRequested" max='{{productInfo.stockQuantity}}'>
      </md-input-container>
-	 <center><md-button class="md-raised md-primary addToCartButton" ng-click="addToCart()" ng-disabled="isDisabled">Add to Cart</md-button></center>
+	 <center><md-button class="md-raised md-primary addToCartButton" ng-click="addToCart()" ng-disabled="checkActive()">Add to Cart</md-button></center>
  </div>
 </div>
 </div>

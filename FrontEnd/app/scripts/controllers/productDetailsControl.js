@@ -6,12 +6,6 @@ angular.module('frontEndApp').controller('productDetailsControl', function ($sco
 	$scope.quantity = {
 		item:1
 	}
-	if(sessionService.get('uid')==null){
-		$scope.isDisabled = true;
-	}
-	else{
-		$scope.isDisabled = false;
-	}
 	$scope.checkData = function(){
 		if($scope.productInfo.name!=undefined){
 			return true;
@@ -30,6 +24,25 @@ angular.module('frontEndApp').controller('productDetailsControl', function ($sco
            .hideDelay(1000));
        // Could also do $mdToast.showSimple('Hello');
      };
+	 
+	 
+	 
+	 
+ 	$scope.checkActive = function(){
+		console.log(sessionService.get('uid'));
+		if(sessionService.get('uid')==null){
+			return true;
+			console.log("HERE CHECK");
+		}
+		else{
+			if($scope.productInfo.stockQuantity!=0){
+				return false;
+			}
+			else{
+				return true;
+		}
+ 	}
+}
 	
 	$scope.addToCart = function(){
 		if(sessionService.get('cart')==null){

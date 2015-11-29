@@ -10,4 +10,17 @@
   </div>
 </div>
 </div>
+<br><br><br>
+<div ng-if="isStaff()">
+    <div flex layout="row" layout-align="center center" class="mainContent">
+     <div class="" style="width:60%; background: #ff8a80; border: 2px solid #000000;">
+	    <div ng-repeat="x in lowstock">
+	   	 <center>{{x.name}} is running low on stock! </center>
+		 <center>There are {{x.stockQuantity}} left.</center>
+		 <hr>
+	    </div>
+		<center><md-button class="md-raised md-primary" ng-click="">Manage Items</md-button></center>
+	 </div>
+ </div>
+</div>
 </div>
