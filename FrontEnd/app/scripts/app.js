@@ -59,6 +59,10 @@ var app=angular
         templateUrl: 'views/staffTools/createUser.html',
 		  controller: 'staffCtrl'
       })
+      .when('/staffUserModify', {
+        templateUrl: 'views/staffTools/staffUserModify.html',
+		  controller: 'staffCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -1,15 +1,22 @@
 'use strict';
 
-angular.module('frontEndApp').controller('staffCtrl', function ($scope,$http,$location,$mdDialog,$route,storeSearch,sessionService) {
+angular.module('frontEndApp').controller('staffCtrl', function ($scope,$http,$location,$mdDialog,$route,storeSearch,sessionService,userIdSession) {
 	
 	var isStaff = sessionService.get('staff');
-	console.log(isStaff);
+
  	$.post("http://127.0.0.1:8010/getAllUsr.php",{isStaff:isStaff}).done(function(data) {
 		$scope.users = data;
   	});
-	
+	$scope.user = userIdSession.get();
 	$scope.goUserMain = function(){
 		$location.path('/staffUserMain');
+	}
+	$scope.goCreateUser = function(){
+		$location.path('/staffUserAdd');
+	}
+	$scope.goModifyUser = function(user){
+		userIdSession.set(user);
+		$location.path('/staffUserModify');
 	}
 	
 	$scope.goOrdersMain = function(){
@@ -18,10 +25,6 @@ angular.module('frontEndApp').controller('staffCtrl', function ($scope,$http,$lo
 	
 	$scope.goProductsMain = function(){
 		
-	}
-	
-	$scope.goCreateUser = function(){
-		$location.path('/staffUserAdd');
 	}
 	
 	$scope.deleteAccount = function(userIdPassed,ev){
@@ -85,7 +88,34 @@ $scope.openToast = function($event) {
 	
 	
 	
+///////////////////////////////
+ 
+$scope.updateAccount = function(){
 	
+	if($scope.user.password=="QAZWSXEDC"){
+		$.post( "http://127.0.0.1:8010/updateAccount.php", {userId: $scope.user.userId,name:$scope.user.name,email:$scope.user.email,address:$scope.user.address}).done(function(data) {
+			if(data==1){
+				sessionService.set('name',$scope.user.name);
+				$scope.openToastSuccess();
+			}
+			else{
+				$scope.openToastSuccess();
+			}
+	  });
+	  
+	}
+	else{
+		$.post( "http://127.0.0.1:8010/updateAccount.php", {userId: $scope.user.userId,name:$scope.user.name,email:$scope.user.email,address:$scope.user.address,password:$scope.user.password}).done(function(data) {
+			if(data==1){
+				sessionService.set('name',$scope.user.name);
+				$scope.openToastSuccess();
+			}
+			else{
+				$scope.openToastSuccess();
+			}
+	  });
+	}
+};
 	
 	
 	
