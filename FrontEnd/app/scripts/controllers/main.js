@@ -41,5 +41,8 @@ $scope.setStock = function(data){
 	console.log($scope.lowstock);
 }
 	
+$scope.manageItemsButton = function(){
+	$location.path('/staffProduct');
+}
 	
   });
