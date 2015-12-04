@@ -5,6 +5,8 @@ drop table orders;
 drop table product;
 drop table usr;
 drop table supplier;
+drop trigger deleteUser;
+drop trigger deleteOrder;
 
 CREATE TABLE supplier(supplierId char(6), name char(30) NOT NULL, PRIMARY KEY(supplierId)); 
 CREATE TABLE product(prodId char(6), supplyID char(6),name char(30), description char(50), active BIT, stockQuantity integer, price real, PRIMARY KEY(prodId),FOREIGN KEY(supplyID) references supplier(supplierId));
@@ -72,26 +74,42 @@ INSERT into contains values('555555','000001','3');
 INSERT into contains values('555555','000002','10');
 
 
---Trigger that deletes contain values relating to deltated order
-CREATE TRIGGER deleteOrder AFTER DELETE on orders
-FOR EACH ROW
-BEGIN
-DELETE FROM contains
-    WHERE contains.OrID = old.OrderId;
-END
 
---Trigger that deletes order values and consequently contains values relating to deleted usr
+CREATE TRIGGER deleteOrder AFTER DELETE on orders 
+  FOR EACH ROW
+  BEGIN
+  DELETE FROM contains
+  WHERE contains.OrID = old.OrderId;
+  END;
+
+
 CREATE TRIGGER deleteUser BEFORE DELETE on usr
 FOR EACH ROW
 BEGIN
 DELETE FROM orders
     WHERE orders.userId = old.userId;
-END
+END;
+
+--Trigger that deletes orders that contain a product
+-- CREATE TRIGGER deleProduct BEFORE DELETE on product
+-- FOR EACH ROW
+-- BEGIN
+-- DELETE FROM contains
+--   WHERE contains.productId = old.prodId;
+-- END
+
+-- CREATE TRIGGER deleteContains AFTER DELETE on contains
+-- FOR EACH ROW
+-- BEGIN
+-- DELETE FROM orders
+--   WHERE orders.OrderId = old.OrId;
+-- END
+
 
 --(this check constraint asserts that you cant take an action that would reduce the supply below zero
-ALTER TABLE product
-ADD CONSTRAINT NoOverselling
-CHECK (stockQuantity > -1);
+-- ALTER TABLE product
+-- ADD CONSTRAINT NoOverselling
+-- CHECK (stockQuantity > -1);
 
 
 
